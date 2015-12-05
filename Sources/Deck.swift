@@ -37,7 +37,7 @@ public struct Deck {
     }
 
     public mutating func shuffle() {
-        cards.shuffleInPlace()
+        cards.shuffle()
     }
 
     public mutating func deal() -> PlayingCard? {
