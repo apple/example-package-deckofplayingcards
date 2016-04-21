@@ -15,12 +15,12 @@ public struct Deck {
     private var cards: [PlayingCard]
 
     public static func standard52CardDeck() -> Deck {
-        let suits: [Suit] = [.Spades, .Hearts, .Diamonds, .Clubs]
-        let ranks: [Rank] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
+        let suits: [Suit] = [.spades, .hearts, .diamonds, .clubs]
+        let ranks: [Rank] = [.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .jack, .queen, .king, .ace]
 
         var cards: [PlayingCard] = []
-        for suit in suits {
-            for rank in ranks {
+        for rank in ranks {
+            for suit in suits {
                 cards.append(PlayingCard(rank: rank, suit: suit))
             }
         }
