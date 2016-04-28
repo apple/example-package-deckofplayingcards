@@ -16,12 +16,12 @@ import XCTest
 
 class DeckTest: XCTestCase {
     
-    func testStandard52CardDeck(){
+    func testStandard52CardDeck() {
         let reducer:([PlayingCard], Rank) -> [PlayingCard] = {
             total, eachRank in
             let suits: [Suit] = [.spades, .hearts, .diamonds, .clubs]
-            let subTotal =  suits.map({ eachSuit in
-                PlayingCard(rank: eachRank, suit: eachSuit)})
+            let subTotal =  suits.map{ eachSuit in
+                PlayingCard(rank: eachRank, suit: eachSuit) }
             return  total + subTotal
         }
         
@@ -31,7 +31,7 @@ class DeckTest: XCTestCase {
         XCTAssertEqual(Deck.standard52CardDeck(), Deck(standard))
     }
     
-    func testDeal(){
+    func testDeal() {
         let card = PlayingCard(rank: Rank.ace, suit: Suit.clubs)
         var deck:Deck = [card]
         
