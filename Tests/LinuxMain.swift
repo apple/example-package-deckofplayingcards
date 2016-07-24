@@ -11,5 +11,5 @@
 @testable import DeckOfPlayingCardsTestSuite
 import XCTest
 
-XCTMain([testCase(DeckTest.allTest)
+XCTMain([testCase(DeckTest.allTests)
         ])
