@@ -8,12 +8,10 @@
  See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 */
 
-extension DeckTest{
-    
-    static var allTests : [(String, DeckTest -> () throws -> Void)] {
-        return [
-                   ("testStandard52CardDeck", testStandard52CardDeck),
-                   ("testDeal",testDeal)
-        ]
-    }
+extension DeckTest {
+
+    static var allTests = [
+        ("testStandard52CardDeck", testStandard52CardDeck),
+        ("testDeal", testDeal),
+    ]
 }
