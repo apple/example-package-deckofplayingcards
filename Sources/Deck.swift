@@ -14,6 +14,10 @@ import PlayingCard
 public struct Deck {
     fileprivate var cards: [PlayingCard]
 
+    public func currentNumberOfCards() -> Int {
+        return self.cards.count
+    }
+    
     public static func standard52CardDeck() -> Deck {
         let suits: [Suit] = [.spades, .hearts, .diamonds, .clubs]
         let ranks: [Rank] = [.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .jack, .queen, .king, .ace]
