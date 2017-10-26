@@ -1,0 +1,31 @@
+{
+  "object": {
+    "pins": [
+      {
+        "reference": {
+          "identity": "example-package-fisheryates",
+          "isLocal": false,
+          "path": "https://github.com/apple/example-package-fisheryates.git"
+        },
+        "state": {
+          "branch": null,
+          "revision": "d3ceb32048bfc6772c0ec2d7f6c08108a1218512",
+          "version": "2.0.4"
+        }
+      },
+      {
+        "reference": {
+          "identity": "example-package-playingcard",
+          "isLocal": false,
+          "path": "https://github.com/apple/example-package-playingcard.git"
+        },
+        "state": {
+          "branch": null,
+          "revision": "ad433a75235389577eca1125ea9419a6ade8b253",
+          "version": "3.0.3"
+        }
+      }
+    ]
+  },
+  "version": 2
+}
