@@ -38,4 +38,9 @@ class DeckTest: XCTestCase {
         XCTAssertEqual(deck.deal(), card)
         XCTAssertNil(deck.deal())
     }
+
+    static var allTests = [
+        ("testStandard52CardDeck", testStandard52CardDeck),
+        ("testDeal", testDeal),
+    ]
 }

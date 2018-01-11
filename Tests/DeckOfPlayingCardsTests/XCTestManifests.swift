@@ -8,10 +8,12 @@
  See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 */
 
-extension DeckTest {
+import XCTest
 
-    static var allTests = [
-        ("testStandard52CardDeck", testStandard52CardDeck),
-        ("testDeal", testDeal),
+#if !os(macOS)
+public func allTests() -> [XCTestCaseEntry] {
+    return [
+        testCase(DeckTest.allTests),
     ]
 }
+#endif
