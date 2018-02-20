@@ -19,6 +19,7 @@ public struct Deck {
         let ranks: [Rank] = [.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .jack, .queen, .king, .ace]
 
         var cards: [PlayingCard] = []
+     
         for rank in ranks {
             for suit in suits {
                 cards.append(PlayingCard(rank: rank, suit: suit))
@@ -53,8 +54,8 @@ extension Deck : ExpressibleByArrayLiteral {
 
 // MARK: - Equatable
 
-extension Deck : Equatable {}
-
-public func ==(lhs: Deck, rhs: Deck) -> Bool {
+extension Deck : Equatable {
+ public static func == (lhs: Deck, rhs: Deck) -> Bool {
     return lhs.cards == rhs.cards
+ }
 }
