@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.3
 
 /*
  This source file is part of the Swift.org open source project
@@ -18,15 +18,24 @@ let package = Package(
         .library(name: "DeckOfPlayingCards", targets: ["DeckOfPlayingCards"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/example-package-fisheryates.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/example-package-playingcard.git", from: "3.0.0"),
+        .package(name:"FisherYates",
+                 url: "https://github.com/apple/example-package-fisheryates.git",
+                 from: "2.0.0"),
+        .package(name: "PlayingCard",
+                 url: "https://github.com/apple/example-package-playingcard.git",
+                 from: "3.0.0"),
     ],
     targets: [
         .target(
             name: "DeckOfPlayingCards",
-            dependencies: ["FisherYates", "PlayingCard"]),
+            dependencies: [
+                .byName(name: "FisherYates"),
+                .byName(name: "PlayingCard")
+            ]),
         .testTarget(
             name: "DeckOfPlayingCardsTests",
-            dependencies: ["DeckOfPlayingCards"]),
+            dependencies: [
+                .target(name: "DeckOfPlayingCards")
+            ]),
     ]
 )
