@@ -13,7 +13,7 @@ import XCTest
 import PlayingCard
 import DeckOfPlayingCards
 
-class DeckTest: XCTestCase {
+class DeckTests: XCTestCase {
     func testStandard52CardDeck() {
         var countByPlayingCard: [PlayingCard: Int] = [:]
 
