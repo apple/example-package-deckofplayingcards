@@ -14,12 +14,9 @@ public struct Deck: Equatable {
     fileprivate var cards: [PlayingCard]
 
     public static func standard52CardDeck() -> Deck {
-        let suits: [Suit] = [.spades, .hearts, .diamonds, .clubs]
-        let ranks: [Rank] = [.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .jack, .queen, .king, .ace]
-
         var cards: [PlayingCard] = []
-        for rank in ranks {
-            for suit in suits {
+        for rank in Rank.allCases {
+            for suit in Suit.allCases {
                 cards.append(PlayingCard(rank: rank, suit: suit))
             }
         }
