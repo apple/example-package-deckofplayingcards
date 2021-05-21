@@ -1,0 +1,43 @@
+/*
+ This source file is part of the Swift.org open source project
+ 
+ Copyright (c) 2014 - 2021 Apple Inc. and the Swift project authors
+ Licensed under Apache License v2.0 with Runtime Library Exception
+ 
+ See http://swift.org/LICENSE.txt for license information
+ See http://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+*/
+
+import XCTest
+
+import PlayingCard
+import DeckOfPlayingCards
+
+class DeckTests: XCTestCase {
+    func testStandard52CardDeck() {
+        var countByPlayingCard: [PlayingCard: Int] = [:]
+
+        var deck = Deck.standard52CardDeck()
+        while let playingCard = deck.deal() {
+            countByPlayingCard[playingCard, default: 0] += 1
+        }
+
+        XCTAssertEqual(countByPlayingCard.count, 52)
+        XCTAssertTrue(countByPlayingCard.values.allSatisfy { $0 == 1 })
+
+        for rank in Rank.allCases {
+            for suit in Suit.allCases {
+                let playingCard = PlayingCard(rank: rank, suit: suit)
+                XCTAssertEqual(countByPlayingCard[playingCard], 1)
+            }
+        }
+    }
+    
+    func testDeal() {
+        let playingCard = PlayingCard(rank: .ace, suit: .clubs)
+        var deck: Deck = [playingCard]
+        
+        XCTAssertEqual(deck.deal(), playingCard)
+        XCTAssertNil(deck.deal())
+    }
+}
