@@ -8,34 +8,36 @@
  See http://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 */
 
-
 import XCTest
 
 @testable import PlayingCard
 @testable import DeckOfPlayingCards
 
 class DeckTest: XCTestCase {
-    
     func testStandard52CardDeck() {
-        let reducer:([PlayingCard], Rank) -> [PlayingCard] = {
-            total, eachRank in
-            let suits: [Suit] = [.spades, .hearts, .diamonds, .clubs]
-            let subTotal =  suits.map{ eachSuit in
-                PlayingCard(rank: eachRank, suit: eachSuit) }
-            return  total + subTotal
+        var countByPlayingCard: [PlayingCard: Int] = [:]
+
+        var deck = Deck.standard52CardDeck()
+        while let playingCard = deck.deal() {
+            countByPlayingCard[playingCard, default: 0] += 1
         }
-        
-        let ranks = [2,3,4,5,6,7,8,9,10,11,12,13,14].map{Rank(rawValue: $0)}.flatMap{$0}
-        let standard = ranks.reduce([PlayingCard](), reducer )
-        
-        XCTAssertEqual(Deck.standard52CardDeck(), Deck(standard))
+
+        XCTAssertEqual(countByPlayingCard.count, 52)
+        XCTAssertTrue(countByPlayingCard.values.allSatisfy { $0 == 1 })
+
+        for rank in Rank.allCases {
+            for suit in Suit.allCases {
+                let playingCard = PlayingCard(rank: rank, suit: suit)
+                XCTAssertEqual(countByPlayingCard[playingCard], 1)
+            }
+        }
     }
     
     func testDeal() {
-        let card = PlayingCard(rank: Rank.ace, suit: Suit.clubs)
-        var deck:Deck = [card]
+        let playingCard = PlayingCard(rank: .ace, suit: .clubs)
+        var deck: Deck = [playingCard]
         
-        XCTAssertEqual(deck.deal(), card)
+        XCTAssertEqual(deck.deal(), playingCard)
         XCTAssertNil(deck.deal())
     }
 
