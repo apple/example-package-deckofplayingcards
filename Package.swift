@@ -18,9 +18,6 @@ let package = Package(
         .library(name: "DeckOfPlayingCards", targets: ["DeckOfPlayingCards"]),
     ],
     dependencies: [
-        .package(name:"FisherYates",
-                 url: "https://github.com/apple/example-package-fisheryates.git",
-                 from: "2.0.0"),
         .package(name: "PlayingCard",
                  url: "https://github.com/apple/example-package-playingcard.git",
                  from: "3.0.0"),
@@ -29,7 +26,6 @@ let package = Package(
         .target(
             name: "DeckOfPlayingCards",
             dependencies: [
-                .byName(name: "FisherYates"),
                 .byName(name: "PlayingCard")
             ]),
         .testTarget(
