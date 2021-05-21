@@ -10,8 +10,8 @@
 
 import XCTest
 
-@testable import PlayingCard
-@testable import DeckOfPlayingCards
+import PlayingCard
+import DeckOfPlayingCards
 
 class DeckTest: XCTestCase {
     func testStandard52CardDeck() {
