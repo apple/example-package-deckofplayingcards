@@ -10,9 +10,13 @@
 
 import PlayingCard
 
+/// A model for shuffling and dealing a deck of playing cards.
+///
+/// The playing card deck consists of 52 individual cards in four suites: spades, hearts, diamonds, and clubs. There are 13 ranks from two to ten, then jack, queen, king, and ace.
 public struct Deck: Equatable {
     fileprivate var cards: [PlayingCard]
 
+    /// Returns a deck of playing cards.
     public static func standard52CardDeck() -> Deck {
         var cards: [PlayingCard] = []
         for rank in Rank.allCases {
@@ -24,14 +28,19 @@ public struct Deck: Equatable {
         return Deck(cards)
     }
 
+    /// Creates a deck of playing cards.
     public init(_ cards: [PlayingCard]) {
         self.cards = cards
     }
 
+    /// Randomly shuffles a deck of playing cards.
     public mutating func shuffle() {
         cards.shuffle()
     }
 
+    /// Deals a card from the deck.
+    ///
+    /// The function returns the last card in the deck.
     public mutating func deal() -> PlayingCard? {
         guard !cards.isEmpty else { return nil }
 
