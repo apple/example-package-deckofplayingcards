@@ -1,9 +1,9 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.3
 
 /*
  This source file is part of the Swift.org open source project
 
- Copyright 2015 Apple Inc. and the Swift project authors
+ Copyright 2015 – 2021 Apple Inc. and the Swift project authors
  Licensed under Apache License v2.0 with Runtime Library Exception
 
  See http://swift.org/LICENSE.txt for license information
@@ -18,15 +18,20 @@ let package = Package(
         .library(name: "DeckOfPlayingCards", targets: ["DeckOfPlayingCards"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/example-package-fisheryates.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/example-package-playingcard.git", from: "3.0.0"),
+        .package(name: "PlayingCard",
+                 url: "https://github.com/apple/example-package-playingcard.git",
+                 from: "3.0.0"),
     ],
     targets: [
         .target(
             name: "DeckOfPlayingCards",
-            dependencies: ["FisherYates", "PlayingCard"]),
+            dependencies: [
+                .byName(name: "PlayingCard")
+            ]),
         .testTarget(
             name: "DeckOfPlayingCardsTests",
-            dependencies: ["DeckOfPlayingCards"]),
+            dependencies: [
+                .target(name: "DeckOfPlayingCards")
+            ]),
     ]
 )
