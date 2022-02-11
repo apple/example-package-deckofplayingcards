@@ -40,4 +40,23 @@ class DeckTests: XCTestCase {
         XCTAssertEqual(deck.deal(), playingCard)
         XCTAssertNil(deck.deal())
     }
+    
+    func testCountEmptyDeckHasZeroCards() {
+        let deck = Deck()
+        XCTAssertEqual(deck.count, 0)
+    }
+    
+    func testCountStandard52CardDeckHas52Cards() {
+        let deck = Deck.standard52CardDeck()
+        
+        XCTAssertEqual(deck.count, 52)
+    }
+    
+    func testCountDealingDecreasesCountByOne() {
+        var deck = Deck([PlayingCard(rank: .ace, suit: .spades), PlayingCard(rank: .queen, suit: .hearts)])
+        
+        XCTAssertEqual(deck.count, 2)
+        XCTAssertNotNil(deck.deal())
+        XCTAssertEqual(deck.count, 1)
+    }
 }

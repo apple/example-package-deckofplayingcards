@@ -46,6 +46,11 @@ public struct Deck: Equatable {
 
         return cards.removeLast()
     }
+    
+    /// The number of remaining cards in the deck.
+    public var count: Int {
+        cards.count
+    }
 }
 
 // MARK: - ExpressibleByArrayLiteral
